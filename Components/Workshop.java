@@ -1,6 +1,4 @@
-package FinalObject;
-
-import Components.Car;
+package Components;
 
 import java.util.ArrayList;
 import java.util.List;

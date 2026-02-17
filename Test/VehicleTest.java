@@ -7,6 +7,9 @@ import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import Components.Volvo240;
+import Components.Car;
+
 class VehicleTest {
 
     private Car kraschIT;

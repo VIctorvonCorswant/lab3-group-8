@@ -1,9 +1,4 @@
-package FinalObject;
-
-import Components.Car;
-import Components.Engine;
-import Components.Movable;
-import Components.Towable;
+package Components;
 
 import java.awt.*;
 
@@ -12,9 +7,9 @@ public final class Saab95 extends Car implements Movable, Towable {
     private boolean turboOn;
     private Engine engine;
 
-    /** Constructor for FinalObject.Saab95 */
+    /** Constructor for Components.Saab95 */
     public Saab95(Color color, Double enginePower) {
-        super(color, enginePower, 2, "FinalObject.Saab95", new Point(0,0), 0);
+        super(color, enginePower, 2, "Components.Saab95", new Point(0,0), 0);
         engine.stopEngine();
     }
     /* Specific methods for SAAB95 */

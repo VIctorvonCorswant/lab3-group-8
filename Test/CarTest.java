@@ -7,6 +7,9 @@ import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import Components.Car;
+import Components.Volvo240;
+
 class CarTest {
 
     private Car kraschIT2;
@@ -24,14 +27,14 @@ class CarTest {
     /** Checks if model name is correct */
     @Test
     public void getModelName() {
-        assertEquals("FinalObject.Volvo240", kraschIT2.getModelName());
+        assertEquals("Components.Volvo240", kraschIT2.getModelName());
     }
 
     /** Checks if car actually starts */
     @Test
     public void getEngineOn() {
         //test if engine can power on
-        assertFalse(kraschIT2.getEngineOn());
+        assertFalse(kraschIT2.isEngineOn());
         kraschIT2.engineOn = true;
         assertTrue(kraschIT2.getEngineOn());
 

@@ -6,14 +6,15 @@ import org.junit.jupiter.api.Test;
 import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
+import Components.Scania;
 
 class ScaniaTest {
 
     private Scania scania;
 
-    /** Sets up a normal FinalObject.Scania */
+    /** Sets up a normal Components.Scania */
     @BeforeEach
-    public void setUp() {scania = new Scania(Color.GRAY, 280.0, 2, "FinalObject.Scania");}
+    public void setUp() {scania = new Scania(Color.GRAY, 280.0, 2, "Components.Scania");}
 
     /** Tests if we can gas whilst the bed is raised */
     @Test

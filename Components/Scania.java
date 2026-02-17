@@ -1,18 +1,14 @@
-package FinalObject;
-
-import Components.Movable;
-import Components.Towable;
-import Components.Truck;
+package Components;
 
 import java.awt.*;
 
-// Yes the FinalObject.Scania is towable (https://www.agg-net.com/sites/default/files/styles/large_compact_teaser/public/images/news/volvo_fh16.jpg?h=bb31b4aa&itok=WxqahyC0)
+// Yes the Components.Scania is towable (https://www.agg-net.com/sites/default/files/styles/large_compact_teaser/public/images/news/volvo_fh16.jpg?h=bb31b4aa&itok=WxqahyC0)
 public class Scania extends Truck implements Movable, Towable {
     /** Initiate variables */
     private double bedAngle = 0.0;
     private boolean turboOn;
 
-    /** FinalObject.Scania constructor */
+    /** Components.Scania constructor */
     protected Scania(Color color, double EnginePower, int nrDoors, String modelName) {
          super(color, EnginePower, nrDoors, modelName);
          this.trailerSafe = true; // The trailer is safe to drive with by default

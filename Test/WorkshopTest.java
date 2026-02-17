@@ -12,7 +12,7 @@ class WorkshopTest {
     private Workshop<Volvo240> workshop;
     private Workshop allWorkshop;
 
-    /** Sets up a normal FinalObject.Volvo240 specific FinalObject.Workshop*/
+    /** Sets up a normal Components.Volvo240 specific Components.Workshop*/
     @BeforeEach
     void setUp() {
         workshop = new Workshop<Volvo240>(2);
@@ -59,7 +59,7 @@ class WorkshopTest {
     @Test
     void onlyAcceptSpecificVehicle() {
         Volvo240 car1 = new Volvo240(Color.BLACK, 128.0);
-        Scania truck = new Scania(Color.BLUE, 300, 2, "FinalObject.Scania");
+        Scania truck = new Scania(Color.BLUE, 300, 2, "Components.Scania");
 
         workshop.addCarToWorkshop(car1);
         //workshop.addCarToWorkshop(truck); //It does not even compile.
@@ -72,7 +72,7 @@ class WorkshopTest {
         allWorkshop = new Workshop(2);
 
         Volvo240 car1 = new Volvo240(Color.BLACK, 128.0);
-        Scania truck = new Scania(Color.BLUE, 300, 2, "FinalObject.Scania");
+        Scania truck = new Scania(Color.BLUE, 300, 2, "Components.Scania");
 
         allWorkshop.addCarToWorkshop(car1);
         allWorkshop.addCarToWorkshop(truck);

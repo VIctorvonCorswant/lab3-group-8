@@ -1,11 +1,7 @@
-package FinalObject;
-
-import Components.*;
+package Components;
 
 import java.awt.*;
 import java.util.List;
-import Components.Truck;
-import Components.Car;
 
 public class VolvoFH16 extends Truck implements Movable {
 
@@ -63,7 +59,7 @@ public class VolvoFH16 extends Truck implements Movable {
         return null;
     }
 
-    /** turbo from saab, because the FinalObject.VolvoFH16 has a turbo */
+    /** turbo from saab, because the Components.VolvoFH16 has a turbo */
     public boolean getTurboOn(){return turboOn;}
 
     public void setTurboOn(){turboOn = true;}

@@ -8,7 +8,7 @@ public abstract class Vehicle {
     public double currentSpeed;
     public Color color;
 
-    public Point coordinates = new Point(0, 0);
+    private Point coordinates = new Point(0, 0);
     public double direction = 0;
 
     public Vehicle(Color color, Point coordinates, double direction) {
@@ -58,5 +58,9 @@ public abstract class Vehicle {
     /** Rotate the vehicle right via subtracting 30° */
     public void turnRight(){
         direction = (direction - Math.toRadians(30)) % (2*Math.PI);
+    }
+
+    public Point getCoordinates(){
+        return coordinates;
     }
 }
