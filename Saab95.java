@@ -3,6 +3,7 @@ import java.awt.*;
 public final class Saab95 extends Car implements Movable, Towable{
     /** Initiate variables */
     private boolean turboOn;
+    private Engine engine;
 
     /** Constructor for Saab95 */
     public Saab95(Color color, Double enginePower) {

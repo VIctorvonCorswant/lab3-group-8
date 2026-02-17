@@ -21,5 +21,8 @@ public class Engine {
     /** Stop the engine */
     public void stopEngine() {if (this.engineOn) {this.engineOn = false;}}
 
+    /** Check if the engine is on */
     public boolean isEngineOn() {return this.engineOn;}
+
+
 }
