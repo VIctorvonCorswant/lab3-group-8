@@ -51,6 +51,6 @@ public class Scania extends Truck implements Movable, Towable{
     protected double speedFactor(){
         double turbo = 1;
         if(turboOn) turbo = 1.3;
-        return enginePower * 0.01 * turbo;
+        return engine.getEnginePower() * 0.01 * turbo;
     }
 }

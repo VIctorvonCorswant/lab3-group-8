@@ -16,7 +16,7 @@ public abstract class Car extends Vehicle {
 
     /** Check if the engine is on */
     public boolean getEngineOn(){
-        return engineOn;
+        return engine.isEngineOn();
     }
 
     /** Start the engine */
@@ -28,8 +28,8 @@ public abstract class Car extends Vehicle {
     /** Accelerate by pressing the gas pedal the car */
     public void gas(double amount){
         if (amount >= 0 && amount <= 1){
-            if(this.getCurrentSpeed() < this.getEnginePower()){
-                incrementSpeed(amount, this.engineOn);
+            if(this.getCurrentSpeed() < engine.getEnginePower()){
+                incrementSpeed(amount, engine.isEngineOn());
                 this.move();
             }
         }
@@ -40,9 +40,8 @@ public abstract class Car extends Vehicle {
     public void brake(double amount){
         if (amount >= 0 && amount <= 1){
             if(this.getCurrentSpeed() > 0){
-                decrementSpeed(amount, this.engineOn);
+                decrementSpeed(amount, engine.isEngineOn());
                 this.move();
-
             }
         }
         else {System.out.println("It's either through the floor or  (Brake is out of range.)");}

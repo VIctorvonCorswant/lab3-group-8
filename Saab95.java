@@ -8,12 +8,12 @@ public final class Saab95 extends Car implements Movable, Towable{
     public Saab95(Color color, Double enginePower) {
         this.nrDoors = 2;
         this.color = color; //Color.red;
-        this.enginePower = enginePower; //125;
+        this.engine = new Engine(enginePower); //125 standard
         this.turboOn = false;
         this.modelName = "Saab95";
         this.coordinates = new Point(0, 0);
         this.direction = 0;
-        stopEngine();
+        engine.stopEngine();
     }
     /* Specific methods for SAAB95 */
         /** turbo get/set methods for saab */
@@ -28,7 +28,7 @@ public final class Saab95 extends Car implements Movable, Towable{
     protected double speedFactor(){
         double turbo = 1;
         if(turboOn) turbo = 1.3;
-        return enginePower * 0.01 * turbo;
+        return engine.getEnginePower() * 0.01 * turbo;
     }
 
 }

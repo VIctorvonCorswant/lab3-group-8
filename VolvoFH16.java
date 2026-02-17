@@ -6,15 +6,16 @@ public class VolvoFH16 extends Truck implements Movable{
 
     /** Initiate variables */
     private boolean turboOn;
-    List<Car> trailer = new ArrayList<>();
+    TruckAttachment trailer;
     protected int trailerSize = 3;
     public boolean engineOn = false;
 
     /** Initialize the constructor */
     public VolvoFH16(Color color, double EnginePower, int nrDoors, int trailerSize, String modelName) {
         super(color, EnginePower, nrDoors, modelName);
-        this.trailerSize = trailerSize;
-        this.trailerSafe = true; // The trailer is safe to drive with by default
+        this.trailer = new TruckAttachment(trailerSize);
+        //this.trailerSize = trailerSize;
+        //this.trailerSafe = true; // The trailer is safe to drive with by default
     }
 
     /** Raise the trailer */
@@ -31,13 +32,13 @@ public class VolvoFH16 extends Truck implements Movable{
         }
     }
 
-    public List<Car> getTrailer() {return trailer;}
+    public List<Object> getTrailer() {return trailer.occupation;}
 
     /** Load car to trailer */
     public <T extends Car & Towable> T loadCar(T car){
-        if(trailer.size() < trailerSize && getCurrentSpeed() == 0 && !this.trailerSafe){
+        if(getCurrentSpeed() == 0){
             if (this.getGeoDistance(car, this) > 5) return car; // Prevent loading cars that are too far away
-            trailer.add(car);
+            trailer.loadObject(car);
             return null;
         }
         return car;
@@ -46,13 +47,13 @@ public class VolvoFH16 extends Truck implements Movable{
 
      /** Unload car from trailer */
     public Car unloadCar(){
-        if(!trailer.isEmpty() && getCurrentSpeed() == 0 && !this.trailerSafe){
-            Car car = trailer.remove(trailer.size() - 1);
+        if(getCurrentSpeed() == 0){
+            Object car = trailer.unloadObject();
             // Unload the car behind the truck, based on the current direction of the truck
             car.direction = (this.direction + Math.toRadians(180)) %  (2*Math.PI);
             car.forceMove(5);
             //car.coordinates = new Point(this.coordinates.x, this.coordinates.y);
-            return car;
+            return (Car) car;
         }
         return null;
     }
@@ -68,7 +69,7 @@ public class VolvoFH16 extends Truck implements Movable{
     protected double speedFactor(){
         double turbo = 1;
         if(turboOn) turbo = 1.3;
-        return enginePower * 0.01 * turbo;
+        return engine.getEnginePower() * 0.01 * turbo;
     }
 
     @Override

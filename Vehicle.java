@@ -9,6 +9,7 @@ public abstract class Vehicle {
     public Point coordinates = new Point(0, 0);
     public double direction = 0;
 
+
     /** Get current speed */
     public double getCurrentSpeed() {return currentSpeed;}
 
