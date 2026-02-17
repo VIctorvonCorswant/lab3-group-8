@@ -24,5 +24,11 @@ public class Engine {
     /** Check if the engine is on */
     public boolean isEngineOn() {return this.engineOn;}
 
+    public double calculateSpeed(double value) {
+        if (this.isEngineOn()) {
+            return this.speedFactor(this.getEnginePower()) * value;
+        }
+        return 0;
 
+    }
 }

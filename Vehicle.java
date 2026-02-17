@@ -5,10 +5,15 @@ import java.awt.*;
 public abstract class Vehicle {
     public double currentSpeed;
     public Color color;
-    public double enginePower;
+
     public Point coordinates = new Point(0, 0);
     public double direction = 0;
 
+    public Vehicle(Color color, Point coordinates, double direction) {
+        this.color = color;
+        this.coordinates = coordinates;
+        this.direction = direction;
+    }
 
     /** Get current speed */
     public double getCurrentSpeed() {return currentSpeed;}
@@ -19,25 +24,9 @@ public abstract class Vehicle {
     /** Set a new color for the vehicle */
     protected void setColor(Color clr){color = clr;}
 
-    /** Calculate the speed factor of the vehicle */
-    protected double speedFactor(double enginePower) {return enginePower * 0.01;}
-
-    /** Increase the speed of the vehicle */
-    protected void incrementSpeed(double amount, boolean engineOn){
-        if (amount < 0 || !engineOn)
-            return;
-        currentSpeed = Math.min(getCurrentSpeed() + (speedFactor(enginePower) * amount), enginePower);
+    protected void setDirection(double direction) {
+        this.direction = direction;
     }
-
-    /** Decrease the speed of the vehicle */
-    protected void decrementSpeed(double amount, boolean engineOn){
-        if (amount < 0 || !engineOn)
-            return;
-        currentSpeed = Math.max(getCurrentSpeed() - (speedFactor(enginePower) * amount), 0);
-    }
-
-    /** Get engine power */
-    public double getEnginePower(){return this.enginePower;}
 
     /** Set the new x and y position based on the direction and current speed */
     public void move(){

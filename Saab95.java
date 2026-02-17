@@ -7,13 +7,7 @@ public final class Saab95 extends Car implements Movable, Towable{
 
     /** Constructor for Saab95 */
     public Saab95(Color color, Double enginePower) {
-        this.nrDoors = 2;
-        this.color = color; //Color.red;
-        this.engine = new Engine(enginePower); //125 standard
-        this.turboOn = false;
-        this.modelName = "Saab95";
-        this.coordinates = new Point(0, 0);
-        this.direction = 0;
+        super(color, enginePower, 2, "Saab95", new Point(0,0), 0);
         engine.stopEngine();
     }
     /* Specific methods for SAAB95 */

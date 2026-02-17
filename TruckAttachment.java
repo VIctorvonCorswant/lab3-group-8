@@ -3,8 +3,8 @@ import java.util.List;
 import java.awt.*;
 
 
-public class TruckAttachment {
-    List<Object> occupation;
+public class TruckAttachment<T> {
+    List<T> occupation;
     int occupationSize;
     // boolean trailerSafe = true;
     double trailerAngle = 0;
@@ -27,7 +27,6 @@ public class TruckAttachment {
 
     private int getTrailerSize() {
         return this.occupation.size();
-
     }
 
     private boolean getTrailerSafe() {
@@ -54,7 +53,7 @@ public class TruckAttachment {
     
     /** Load object on attachment */
     public void loadObject(Object object){
-        occupation.add(object);
+        occupation.add((T) object);
     }
     
     /** Unload object from Attachment */
