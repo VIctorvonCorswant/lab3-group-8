@@ -1,3 +1,5 @@
+package Components;
+
 import java.awt.*;
 
 /** Reference https://sv.wikipedia.org/wiki/Fordon for our defenition of vehicle */

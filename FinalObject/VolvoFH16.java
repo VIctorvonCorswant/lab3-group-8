@@ -1,8 +1,13 @@
+package FinalObject;
+
+import Components.*;
+
 import java.awt.*;
 import java.util.List;
-import java.util.ArrayList;
+import Components.Truck;
+import Components.Car;
 
-public class VolvoFH16 extends Truck implements Movable{
+public class VolvoFH16 extends Truck implements Movable {
 
     /** Initiate variables */
     private boolean turboOn;
@@ -45,7 +50,7 @@ public class VolvoFH16 extends Truck implements Movable{
     }
 
 
-     /** Unload car from trailer */
+    /** Unload car from trailer */
     public Car unloadCar(){
         if(getCurrentSpeed() == 0){
             Car car = (Car) trailer.unloadObject();
@@ -58,7 +63,7 @@ public class VolvoFH16 extends Truck implements Movable{
         return null;
     }
 
-    /** turbo from saab, because the VolvoFH16 has a turbo */
+    /** turbo from saab, because the FinalObject.VolvoFH16 has a turbo */
     public boolean getTurboOn(){return turboOn;}
 
     public void setTurboOn(){turboOn = true;}

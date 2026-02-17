@@ -11,9 +11,9 @@ class ScaniaTest {
 
     private Scania scania;
 
-    /** Sets up a normal Scania */
+    /** Sets up a normal FinalObject.Scania */
     @BeforeEach
-    public void setUp() {scania = new Scania(Color.GRAY, 280.0, 2, "Scania");}
+    public void setUp() {scania = new Scania(Color.GRAY, 280.0, 2, "FinalObject.Scania");}
 
     /** Tests if we can gas whilst the bed is raised */
     @Test

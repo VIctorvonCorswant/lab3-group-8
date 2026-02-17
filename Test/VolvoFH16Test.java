@@ -13,7 +13,7 @@ class VolvoFH16Test {
 
     private VolvoFH16 fh16;
 
-    /** Sets up a VolvoFH16 */
+    /** Sets up a FinalObject.VolvoFH16 */
     @BeforeEach
     public void setUp() {
         fh16 = new VolvoFH16(Color.GRAY, 300.0, 2, 3, "FH16");
@@ -65,7 +65,7 @@ class VolvoFH16Test {
         fh16.loadCar(bil2);
         fh16.loadCar(lastbil);
         // fh16.loadCar(lastbil1);  // This line is commented out because it would cause an error
-                                    // because VolvoFH16 can't be towed
+                                    // because FinalObject.VolvoFH16 can't be towed
 
         assertEquals(2, fh16.trailer.size());
     }

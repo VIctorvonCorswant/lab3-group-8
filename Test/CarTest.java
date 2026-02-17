@@ -24,7 +24,7 @@ class CarTest {
     /** Checks if model name is correct */
     @Test
     public void getModelName() {
-        assertEquals("Volvo240", kraschIT2.getModelName());
+        assertEquals("FinalObject.Volvo240", kraschIT2.getModelName());
     }
 
     /** Checks if car actually starts */

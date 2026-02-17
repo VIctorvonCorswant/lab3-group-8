@@ -1,12 +1,18 @@
+package FinalObject;
+
+import Components.Car;
+import Components.Movable;
+import Components.Towable;
+
 import java.awt.*;
 
-public final class Volvo240 extends Car implements Movable, Towable{
+public final class Volvo240 extends Car implements Movable, Towable {
     /** Initiate variables */
     private final static double trimFactor = 1.25;
 
-    /** Constructor for Volvo240 */
+    /** Constructor for FinalObject.Volvo240 */
     public Volvo240(Color color, Double enginePower){
-        super(color, enginePower,4,"Volvo240", new Point(0,0), 0);
+        super(color, enginePower,4,"FinalObject.Volvo240", new Point(0,0), 0);
         engine.stopEngine();
     }
 
