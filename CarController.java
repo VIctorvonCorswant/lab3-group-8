@@ -33,7 +33,7 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Components.Volvo240(Color.BLUE, double 120));
+        cc.cars.add(new Components.Volvo240(Color.BLUE, 120.0));
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);

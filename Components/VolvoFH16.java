@@ -79,7 +79,7 @@ public class VolvoFH16 extends Truck implements Movable {
             super.move();
             // Move all cars on the trailer with the truck
             for (Car car : trailer.occupation) {
-                car.coordinates = this.coordinates;
+                car.coordinates = this.getCoordinates();
             }
         }
     }
