@@ -52,12 +52,12 @@ public abstract class Vehicle {
     /** Rotate the vehicle left via adding 30° */
     public void turnLeft(){
         // rotate the vehicle left via adding 30°
-        direction = (direction + Math.toRadians(30)) % (2*Math.PI);
+        direction = (direction - Math.toRadians(30)) % (2*Math.PI);
     }
 
     /** Rotate the vehicle right via subtracting 30° */
     public void turnRight(){
-        direction = (direction - Math.toRadians(30)) % (2*Math.PI);
+        direction = (direction + Math.toRadians(30)) % (2*Math.PI);
     }
 
     public Point getCoordinates(){

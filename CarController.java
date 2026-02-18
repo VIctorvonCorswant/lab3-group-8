@@ -33,7 +33,7 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Components.Volvo240(Color.BLUE, 120.0));
+        //cc.cars.add(new Components.Volvo240(Color.BLUE, 120.0));
         cc.cars.add(new Components.Saab95(Color.BLUE, 120.0));
 
         // Start a new view and send a reference of self
@@ -94,5 +94,30 @@ public class CarController {
                 ((Components.Saab95) car).setTurboOff();
             }
         }
+    }
+
+    void turnLeft() {
+        for (Car car : cars) {
+            if (car instanceof Components.Saab95) {
+                ((Components.Saab95) car).turnLeft();
+            }
+        }
+    }
+
+    void turnRight() {
+        for (Car car : cars) {
+            if (car instanceof Components.Saab95) {
+                ((Components.Saab95) car).turnRight();
+            }
+        }
+    }
+
+    double getCurrentSpeed() {
+        for (Car car : cars) {
+            if (car instanceof Components.Saab95) {
+                return ((Components.Saab95) car).getCurrentSpeed();
+            }
+        }
+        return 0;
     }
 }
