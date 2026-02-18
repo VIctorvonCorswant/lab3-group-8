@@ -34,6 +34,7 @@ public class CarController {
         CarController cc = new CarController();
 
         cc.cars.add(new Components.Volvo240(Color.BLUE, 120.0));
+        cc.cars.add(new Components.Saab95(Color.BLUE, 120.0));
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -43,11 +44,11 @@ public class CarController {
     }
 
     /* Each step the TimerListener moves all the cars in the list and tells the
-    * view to update its images. Change this method to your needs.
-    * */
+     * view to update its images. Change this method to your needs.
+     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-           for (Car car : cars) {
+            for (Car car : cars) {
                 car.move();
                 int x = (int) Math.round(car.getCoordinates().x);
                 int y = (int) Math.round(car.getCoordinates().y);
@@ -58,11 +59,40 @@ public class CarController {
         }
     }
 
+    void startEngines() {
+        for (Car car : cars) {car.engine.startEngine();}}
+
+    void stopEngines() {
+        for (Car car : cars) {car.engine.stopEngine();}}
+
     // Calls the gas method for each car once
     void gas(double amount) {
         double gas = (amount) / 100;
         for (Car car : cars) {
             car.gas(gas);
+        }
+    }
+
+    void brake(double amount) {
+        double brake = (amount) / 100;
+        for (Car car : cars) {
+            car.brake(brake);
+        }
+    }
+
+    void turboOn() {
+        for (Car car : cars) {
+            if (car instanceof Components.Saab95) {
+                ((Components.Saab95) car).setTurboOn();
+            }
+        }
+    }
+
+    void turboOff() {
+        for (Car car : cars) {
+            if (car instanceof Components.Saab95) {
+                ((Components.Saab95) car).setTurboOff();
+            }
         }
     }
 }

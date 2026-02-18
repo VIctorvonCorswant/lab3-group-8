@@ -8,7 +8,7 @@ public abstract class Vehicle {
     public double currentSpeed;
     public Color color;
 
-    private Point coordinates = new Point(0, 0);
+    protected Point coordinates = new Point(0, 0);
     public double direction = 0;
 
     public Vehicle(Color color, Point coordinates, double direction) {
