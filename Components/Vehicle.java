@@ -42,6 +42,12 @@ public abstract class Vehicle {
         coordinates.y += (int) (Math.sin(direction) * distance);
     }
 
+    //** Force position of the vehicle */
+    public void forcePosition(Point inputCords){
+        coordinates.x = inputCords.x;
+        coordinates.y = inputCords.y;
+    }
+
     /** Calculate the distance between two vehicles */
     public double getGeoDistance(Vehicle v1, Vehicle v2){
         double distX = Math.abs(v1.coordinates.getX() - v2.coordinates.getX());

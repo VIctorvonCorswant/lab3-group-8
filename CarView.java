@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 public class CarView extends JFrame{
     private static final int X = 800;
     private static final int Y = 800;
+    public DrawPanel panel;
 
     // The controller member
     CarController carC;
@@ -155,17 +156,11 @@ public class CarView extends JFrame{
 
         turboOnButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                carC.turboOn();
-            }
-        });
+            public void actionPerformed(ActionEvent e) {carC.turboOn();}});
 
         turboOffButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                carC.turboOff();
-            }
-        });
+            public void actionPerformed(ActionEvent e) {carC.turboOff();}});
 
         turnLeft.addActionListener(new ActionListener() {
             @Override
@@ -176,6 +171,14 @@ public class CarView extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {carC.turnRight();}
         });
+
+        new javax.swing.Timer(500,new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //AddVehicleToWorkshop();
+            }
+        });
+
 
         //Lägg till att Scanian kan sänka och höja
 
