@@ -64,19 +64,17 @@ public class CarController {
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (DrawPanel panel : drawObjects) {
-                //System.out.println(panel);
                 for (Car car : cars) {
                     if (Objects.equals(panel.getModelName(), car.getModelName())) {
                         car.move();
                         int x = (int) Math.round(car.getCoordinates().x);
                         int y = (int) Math.round(car.getCoordinates().y);
-
                         panel.moveit(x, y);
                         // repaint() calls the paintComponent method of the panel
-
                     }
                 }
             }
+            // repaint() calls the paintComponent method of the panel
             frame.drawPanel.repaint();
         }
     }
