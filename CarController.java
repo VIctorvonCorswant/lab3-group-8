@@ -98,17 +98,13 @@ public class CarController {
 
     void turnLeft() {
         for (Car car : cars) {
-            if (car instanceof Components.Saab95) {
-                ((Components.Saab95) car).turnLeft();
-            }
+                car.turnLeft();
         }
     }
 
     void turnRight() {
         for (Car car : cars) {
-            if (car instanceof Components.Saab95) {
-                ((Components.Saab95) car).turnRight();
-            }
+            car.turnRight();
         }
     }
 
