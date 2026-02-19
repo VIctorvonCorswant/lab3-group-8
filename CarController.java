@@ -115,7 +115,8 @@ public class CarController {
     double getCurrentSpeed() {
         for (Car car : cars) {
             if (car instanceof Components.Saab95) {
-                return ((Components.Saab95) car).getCurrentSpeed();
+                double speed = ((Components.Saab95) car).getCurrentSpeed();
+                return (double) Math.round(speed * 100) / 100;
             }
         }
         return 0;
