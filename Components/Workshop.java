@@ -12,9 +12,9 @@ public class Workshop<M extends Car> {
     public Point coordinates = new Point(300, 300);
 
 
-    public Workshop(int facilitySize, String modelName) {
+    public Workshop(int facilitySize, String workshopName) {
         this.facilitySize = facilitySize;
-        this.modelName  =modelName;
+        this.workshopName = workshopName;
     }
 
     public String getModelName() {

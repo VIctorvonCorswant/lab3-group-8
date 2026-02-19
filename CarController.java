@@ -40,8 +40,8 @@ public class CarController {
         //cc.workshops.add(new Components.Workshop<Volvo240>(3, "VolvoWorkshop")); //Maybe should be VolvoBrand
         cc.workshops.add(new Components.Workshop<Volvo240>(3, "VolvoBrand"));
 
-        System.out.println("Bamse");
-        System.out.println(cc.cars);
+//        System.out.println("Bamse");
+//        System.out.println(cc.cars);
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
