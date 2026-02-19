@@ -50,7 +50,6 @@ public class DrawPanel extends JPanel{
         }
 
         for (Workshop w : carC.getWorkshops()) {
-            System.out.println("workshop" + w);
             Point p = w.getCoordinates();
             g.drawImage(w.getImage(), p.x, p.y, null);
         }
