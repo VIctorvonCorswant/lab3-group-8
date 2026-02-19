@@ -9,8 +9,8 @@ public class Scania extends Truck implements Movable, Towable {
     private boolean turboOn;
 
     /** Components.Scania constructor */
-    protected Scania(Color color, double EnginePower, int nrDoors, String modelName) {
-         super(color, EnginePower, nrDoors, modelName);
+    public Scania(Color color, double EnginePower, Point coordinates) {
+         super(color, EnginePower, 2, "Scania", coordinates);
          this.trailerSafe = true; // The trailer is safe to drive with by default
     }
 

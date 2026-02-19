@@ -7,8 +7,8 @@ public final class Saab95 extends Car implements Movable, Towable {
     private boolean turboOn;
 
     /** Constructor for Components.Saab95 */
-    public Saab95(Color color, Double enginePower) {
-        super(color, enginePower, 2, "Saab95", new Point(0,100), 0);
+    public Saab95(Color color, Double enginePower, Point coordinates) {
+        super(color, enginePower, 2, "Saab95", coordinates, 0);
         engine.stopEngine();
     }
     /* Specific methods for SAAB95 */

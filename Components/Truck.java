@@ -6,8 +6,8 @@ public abstract class Truck extends Car {
 
     protected boolean trailerSafe;
 
-    protected Truck(Color color, Double enginePower, int nrDoors, String modelName) {
-        super(color, enginePower, nrDoors, modelName, new Point(0, 0), 0);
+    protected Truck(Color color, Double enginePower, int nrDoors, String modelName, Point coordinates) {
+        super(color, enginePower, nrDoors, modelName, coordinates, 0);
         engine.stopEngine();
     }
 

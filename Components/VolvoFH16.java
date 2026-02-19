@@ -12,8 +12,8 @@ public class VolvoFH16 extends Truck implements Movable {
     public boolean engineOn = false;
 
     /** Initialize the constructor */
-    public VolvoFH16(Color color, double enginePower, int nrDoors, int trailerSize, String modelName) {
-        super(color, enginePower, nrDoors, modelName);
+    public VolvoFH16(Color color, double enginePower, int trailerSize, Point coordinates ) {
+        super(color, enginePower, 2, "VolvoFH16", coordinates);
         this.trailer = new TruckAttachment<>(trailerSize);
         //this.trailerSize = trailerSize;
         //this.trailerSafe = true; // The trailer is safe to drive with by default

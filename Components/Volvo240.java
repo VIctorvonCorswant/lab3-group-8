@@ -7,8 +7,8 @@ public final class Volvo240 extends Car implements Movable, Towable {
     private final static double trimFactor = 1.25;
 
     /** Constructor for Components.Volvo240 */
-    public Volvo240(Color color, Double enginePower){
-        super(color, enginePower,4,"Volvo240", new Point(100,0), 0);
+    public Volvo240(Color color, Double enginePower, Point coordinates) {
+        super(color, enginePower,4,"Volvo240", coordinates, 0);
         engine.stopEngine();
     }
 

@@ -36,13 +36,15 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Components.Volvo240(Color.BLUE, 120.0));
-        cc.cars.add(new Components.Saab95(Color.BLUE, 120.0));
+        cc.cars.add(new Components.Volvo240(Color.BLUE, 120.0, new Point (0, 0)));
+        cc.cars.add(new Components.Volvo240(Color.BLUE, 120.0, new Point (200, 0)));
+
+        cc.cars.add(new Components.Saab95(Color.BLUE, 120.0, new Point (0, 100)));
+
+        cc.cars.add(new Components.Scania(Color.BLUE, 240.0, new Point (0, 200)));
+
         cc.workshops.add(new Components.Workshop<Volvo240>(3, "VolvoBrand", new Point(300, 200))); //VolvoBrand
         cc.workshops.add(new Components.Workshop<>(3, "VolvoWorkshop", new Point(200, 350))); //Our Volvo Workshop
-
-//        System.out.println("Bamse");
-//        System.out.println(cc.cars);
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -57,8 +59,8 @@ public class CarController {
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Car car : cars) {
-                int panelWidth = frame.getWidth();
-                int panelheight = frame.getHeight();
+                int panelWidth = frame.drawPanel.getWidth()-(100); // Added minor offsets to prevent the cars from disappearing off the screen
+                int panelheight = frame.drawPanel.getHeight()-(60);
                 car.move();
                 car.checkBounds(panelWidth,panelheight);
                 int x = (int) Math.round(car.getCoordinates().x);
