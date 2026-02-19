@@ -9,10 +9,7 @@ public final class Volvo240 extends Car implements Movable, Towable {
     /** Constructor for Components.Volvo240 */
     public Volvo240(Color color, Double enginePower, Point coordinates) {
         super(color, enginePower,4,"Volvo240", coordinates, 0);
+        this.engine.setTurboFactor(trimFactor);
         engine.stopEngine();
     }
-
-    /** Overrides the default function for speedFactor with SAAB95's own implementation */
-    @Override
-    protected double speedFactor() {return engine.getEnginePower() * 0.01 * trimFactor;}
 }

@@ -61,7 +61,4 @@ public abstract class Car extends Vehicle {
             currentSpeed += engine.calculateSpeed((amount));
         }
     }
-
-    /** Does something different for each car type */
-    protected abstract double speedFactor();
 }

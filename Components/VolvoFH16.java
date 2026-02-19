@@ -3,7 +3,7 @@ package Components;
 import java.awt.*;
 import java.util.List;
 
-public class VolvoFH16 extends Truck implements Movable {
+public class VolvoFH16 extends Truck implements Movable, Turbo {
 
     /** Initiate variables */
     private boolean turboOn;
@@ -15,6 +15,7 @@ public class VolvoFH16 extends Truck implements Movable {
     public VolvoFH16(Color color, double enginePower, int trailerSize, Point coordinates ) {
         super(color, enginePower, 2, "VolvoFH16", coordinates);
         this.trailer = new TruckAttachment<>(trailerSize);
+        this.engine.setTurboFactor(1.3);
         //this.trailerSize = trailerSize;
         //this.trailerSafe = true; // The trailer is safe to drive with by default
     }
@@ -60,18 +61,9 @@ public class VolvoFH16 extends Truck implements Movable {
     }
 
     /** turbo from saab, because the Components.VolvoFH16 has a turbo */
-    public boolean getTurboOn(){return turboOn;}
+    public void setTurboOn(){this.engine.setTurboOn();}
 
-    public void setTurboOn(){turboOn = true;}
-
-    public void setTurboOff(){turboOn = false;}
-
-    @Override
-    protected double speedFactor(){
-        double turbo = 1;
-        if(turboOn) turbo = 1.3;
-        return engine.getEnginePower() * 0.01 * turbo;
-    }
+    public void setTurboOff(){this.engine.setTurboOff();}
 
     @Override
     public void move(){

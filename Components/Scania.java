@@ -3,7 +3,7 @@ package Components;
 import java.awt.*;
 
 // Yes the Components.Scania is towable (https://www.agg-net.com/sites/default/files/styles/large_compact_teaser/public/images/news/volvo_fh16.jpg?h=bb31b4aa&itok=WxqahyC0)
-public class Scania extends Truck implements Movable, Towable {
+public class Scania extends Truck implements Movable, Towable, Turbo {
     /** Initiate variables */
     private double bedAngle = 0.0;
     private boolean turboOn;
@@ -12,6 +12,7 @@ public class Scania extends Truck implements Movable, Towable {
     public Scania(Color color, double EnginePower, Point coordinates) {
          super(color, EnginePower, 2, "Scania", coordinates);
          this.trailerSafe = true; // The trailer is safe to drive with by default
+         this.engine.setTurboFactor(1.3);
     }
 
     public double getBedAngle() {return bedAngle;}
@@ -43,16 +44,7 @@ public class Scania extends Truck implements Movable, Towable {
     }
 
     /** turbo get/set methods from saab, because the scania has a turbo */
-    public boolean getTurboOn(){return turboOn;}
+    public void setTurboOn(){this.engine.setTurboOn();}
 
-    public void setTurboOn(){turboOn = true;}
-
-    public void setTurboOff(){turboOn = false;}
-
-    @Override
-    protected double speedFactor(){
-        double turbo = 1;
-        if(turboOn) turbo = 1.3;
-        return engine.getEnginePower() * 0.01 * turbo;
-    }
+    public void setTurboOff(){this.engine.setTurboOff();}
 }

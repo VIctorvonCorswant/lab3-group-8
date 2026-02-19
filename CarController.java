@@ -1,14 +1,10 @@
-import Components.Car;
+import Components.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
-import Components.Volvo240;
-import Components.Saab95;
-import Components.Workshop;
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -63,6 +59,7 @@ public class CarController {
                 int panelheight = frame.drawPanel.getHeight()-(60);
                 car.move();
                 car.checkBounds(panelWidth,panelheight);
+//                car.addVehicle
                 int x = (int) Math.round(car.getCoordinates().x);
                 int y = (int) Math.round(car.getCoordinates().y);
                 frame.drawPanel.moveit(x, y);
@@ -102,16 +99,16 @@ public class CarController {
 
     void turboOn() {
         for (Car car : cars) {
-            if (car instanceof Components.Saab95) {
-                ((Components.Saab95) car).setTurboOn();
+            if (car instanceof Turbo) {
+                ((Turbo) car).setTurboOn();
             }
         }
     }
 
     void turboOff() {
         for (Car car : cars) {
-            if (car instanceof Components.Saab95) {
-                ((Components.Saab95) car).setTurboOff();
+            if (car instanceof Turbo) {
+                ((Turbo) car).setTurboOff();
             }
         }
     }
@@ -131,16 +128,4 @@ public class CarController {
         return 0;
     }
 
-    void addVehicleToWorkshop(Workshop workshop) {
-        for (Car car : cars) {
-            double distX = Math.abs(workshop.coordinates.getX() - car.getCoordinates().getX());
-            double distY = Math.abs(workshop.coordinates.getY() - car.getCoordinates().getY());
-            if (distX < 10 && distY < 10) {
-                boolean answer = workshop.addCarToWorkshop(car);
-                if (answer) {
-                    car.forcePosition(new Point(300, 300));
-                }
-            }
-        }
-    }
 }
