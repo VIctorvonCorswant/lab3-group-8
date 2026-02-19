@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import Components.Volvo240;
+import Components.Saab95;
 import Components.Workshop;
 
 /*
@@ -37,8 +38,8 @@ public class CarController {
 
         cc.cars.add(new Components.Volvo240(Color.BLUE, 120.0));
         cc.cars.add(new Components.Saab95(Color.BLUE, 120.0));
-        cc.workshops.add(new Components.Workshop<Volvo240>(3, "VolvoWorkshop")); //Maybe should be VolvoBrand
-        cc.workshops.add(new Components.Workshop<Volvo240>(3, "VolvoBrand"));
+        cc.workshops.add(new Components.Workshop<Volvo240>(3, "VolvoBrand", new Point(300, 200))); //VolvoBrand
+        cc.workshops.add(new Components.Workshop<>(3, "VolvoWorkshop", new Point(200, 350))); //Our Volvo Workshop
 
 //        System.out.println("Bamse");
 //        System.out.println(cc.cars);
@@ -56,13 +57,16 @@ public class CarController {
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Car car : cars) {
+                int panelWidth = frame.getWidth();
+                int panelheight = frame.getHeight();
                 car.move();
+                car.checkBounds(panelWidth,panelheight);
                 int x = (int) Math.round(car.getCoordinates().x);
                 int y = (int) Math.round(car.getCoordinates().y);
                 frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
-            }
+            } fixed collision kinda
         }
     }
 

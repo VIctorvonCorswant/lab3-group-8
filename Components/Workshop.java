@@ -15,9 +15,11 @@ public class Workshop<M extends Car> {
     public Point coordinates = new Point(300, 300);
 
 
-    public Workshop(int facilitySize, String workshopName) {
+    public Workshop(int facilitySize, String workshopName, Point coords) {
         this.facilitySize = facilitySize;
         this.workshopName = workshopName;
+        this.coordinates.x = coords.x;
+        this.coordinates.y = coords.y;
     }
 
     public String getModelName() {

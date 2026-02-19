@@ -69,6 +69,17 @@ public abstract class Vehicle {
         direction = (direction + Math.toRadians(30)) % (2*Math.PI);
     }
 
+    public void checkBounds(int maxX, int maxY) {
+        if (coordinates.x < 0 || coordinates.x > maxX) {
+            direction = Math.PI - direction;
+        }
+
+        if (coordinates.y < 0 || coordinates.y > maxY) {
+            direction = 2*Math.PI - direction;
+        }
+    }
+
+
     public Point getCoordinates(){
         return coordinates;
     }
