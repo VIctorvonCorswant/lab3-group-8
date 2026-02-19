@@ -69,9 +69,9 @@ public class CarController {
                         car.move();
                         int x = (int) Math.round(car.getCoordinates().x);
                         int y = (int) Math.round(car.getCoordinates().y);
-                        frame.panel.moveit(x, y);
+                        panel.moveit(x, y);
                         // repaint() calls the paintComponent method of the panel
-                        frame.panel.repaint();
+                        panel.repaint();
                     }
                 }
             }
@@ -139,21 +139,6 @@ public class CarController {
                 if (answer) {
                     car.forcePosition(new Point(300, 300));
                 }
-            }
-        }
-    }
-
-    public double getGeoDistance(Vehicle v1, Vehicle v2){
-        double distX = Math.abs(v1.coordinates.getX() - v2.coordinates.getX());
-        double distY = Math.abs(v1.coordinates.getY() - v2.coordinates.getY());
-        return Math.sqrt(Math.pow(distX, 2) + Math.pow(distY, 2));
-    }
-
-
-    void addVehicleToWorkshop(Car car) {
-        for(Workshop shop : workshops){
-            if (shop instanceof Workshop){
-                shop.addCarToWorkshop(car);
             }
         }
     }
