@@ -1,6 +1,9 @@
 package Components;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +11,7 @@ public class Workshop<M extends Car> {
 
     List<M> facility = new ArrayList<>();
     protected int facilitySize = 5;
-    public String modelName;
+    public String workshopName;
     public Point coordinates = new Point(300, 300);
 
 
@@ -18,7 +21,7 @@ public class Workshop<M extends Car> {
     }
 
     public String getModelName() {
-        return modelName;
+        return workshopName;
     }
 
     public boolean addCarToWorkshop(M car) {
@@ -30,9 +33,19 @@ public class Workshop<M extends Car> {
         return false;
     }
 
+    public Image getImage()  {
+        try {
+            return ImageIO.read(new File("pics/workshopName.jpg".replace("workshopName", this.workshopName)));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public boolean removeCarFromWorkshop(M car) {
         return facility.remove(car);
     }
 
     public List<M> getFacility() {return facility;}
+
+    public Point getCoordinates() {return coordinates;}
 }

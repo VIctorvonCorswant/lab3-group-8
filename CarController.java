@@ -37,7 +37,7 @@ public class CarController {
 
         cc.cars.add(new Components.Volvo240(Color.BLUE, 120.0));
         cc.cars.add(new Components.Saab95(Color.BLUE, 120.0));
-        //cc.workshops.add(new Components.Workshop<Volvo240>(3, "VolvoWorkshop")); //Maybe should be VolvoBrand
+        cc.workshops.add(new Components.Workshop<Volvo240>(3, "VolvoWorkshop")); //Maybe should be VolvoBrand
         cc.workshops.add(new Components.Workshop<Volvo240>(3, "VolvoBrand"));
 
 //        System.out.println("Bamse");
@@ -68,6 +68,9 @@ public class CarController {
 
     public ArrayList<Car> getCarList() {
         return cars;
+    }
+    public ArrayList<Workshop> getWorkshops() {
+        return workshops;
     }
 
     void startEngines() {
