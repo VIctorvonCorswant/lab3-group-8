@@ -18,7 +18,7 @@ public abstract class Vehicle {
     }
 
     /** Get current speed */
-    public double getCurrentSpeed() {return currentSpeed;}
+    public double getCurrentSpeed() {return Math.round(currentSpeed);}
 
     /** Get color */
     public Color getColor() {return color;}

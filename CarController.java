@@ -41,11 +41,11 @@ public class CarController {
 
         cc.cars.add(new Components.Volvo240(Color.BLUE, 120.0));
         cc.cars.add(new Components.Saab95(Color.BLUE, 120.0));
-        cc.workshops.add(new Components.Workshop<Volvo240>(3, "VolvoWorkshop")); //Maybe should be VolvoBrand
+        //cc.workshops.add(new Components.Workshop<Volvo240>(3, "VolvoWorkshop")); //Maybe should be VolvoBrand
         cc.workshops.add(new Components.Workshop<Volvo240>(3, "VolvoBrand"));
 
         for (Car car : cc.cars){
-            cc.drawObjects.add(new DrawPanel(0,100,car.getModelName()));
+            cc.drawObjects.add(new DrawPanel(10,100,car.getModelName()));
         }
 
         for (Workshop workshop : cc.workshops){
@@ -64,17 +64,20 @@ public class CarController {
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (DrawPanel panel : drawObjects) {
+                //System.out.println(panel);
                 for (Car car : cars) {
                     if (Objects.equals(panel.getModelName(), car.getModelName())) {
                         car.move();
                         int x = (int) Math.round(car.getCoordinates().x);
                         int y = (int) Math.round(car.getCoordinates().y);
+
                         panel.moveit(x, y);
                         // repaint() calls the paintComponent method of the panel
-                        panel.repaint();
+
                     }
                 }
             }
+            frame.drawPanel.repaint();
         }
     }
 

@@ -44,7 +44,6 @@ public class DrawPanel extends JPanel{
             // if you are starting in IntelliJ.
 
             String img = "pics/$modelName.jpg".replace("$modelName", modelName);
-            System.out.println(img);
             carImage = ImageIO.read(Objects.requireNonNull(DrawPanel.class.getResourceAsStream(img)));
             //workshopImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/VolvoBrand.jpg"));
         } catch (IOException ex)
@@ -63,6 +62,7 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        //System.out.println("X" + objectPoint.x + " Y" + objectPoint.y);
         g.drawImage(carImage, objectPoint.x, objectPoint.y, null);
         //g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
         //g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
