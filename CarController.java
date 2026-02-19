@@ -5,11 +5,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Objects;
 
 import Components.Volvo240;
 import Components.Workshop;
-import Components.Vehicle;
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -31,10 +29,8 @@ public class CarController {
     // A list of cars, modify if needed
     ArrayList<Car> cars = new ArrayList<>();
     ArrayList<Workshop> workshops = new ArrayList<>();
-    ArrayList<DrawPanel> drawObjects = new ArrayList<>();
 
     //methods:
-
     public static void main(String[] args) {
         // Instance of this class
         CarController cc = new CarController();
@@ -44,13 +40,9 @@ public class CarController {
         //cc.workshops.add(new Components.Workshop<Volvo240>(3, "VolvoWorkshop")); //Maybe should be VolvoBrand
         cc.workshops.add(new Components.Workshop<Volvo240>(3, "VolvoBrand"));
 
-        for (Car car : cc.cars){
-            cc.drawObjects.add(new DrawPanel(10,100,car.getModelName()));
-        }
+        System.out.println("Bamse");
+        System.out.println(cc.cars);
 
-        for (Workshop workshop : cc.workshops){
-            cc.drawObjects.add(new DrawPanel(0,100, workshop.getModelName()));
-        }
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
 
@@ -63,20 +55,19 @@ public class CarController {
      * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (DrawPanel panel : drawObjects) {
-                for (Car car : cars) {
-                    if (Objects.equals(panel.getModelName(), car.getModelName())) {
-                        car.move();
-                        int x = (int) Math.round(car.getCoordinates().x);
-                        int y = (int) Math.round(car.getCoordinates().y);
-                        panel.moveit(x, y);
-                        // repaint() calls the paintComponent method of the panel
-                    }
-                }
+            for (Car car : cars) {
+                car.move();
+                int x = (int) Math.round(car.getCoordinates().x);
+                int y = (int) Math.round(car.getCoordinates().y);
+                frame.drawPanel.moveit(x, y);
+                // repaint() calls the paintComponent method of the panel
+                frame.drawPanel.repaint();
             }
-            // repaint() calls the paintComponent method of the panel
-            frame.drawPanel.repaint();
         }
+    }
+
+    public ArrayList<Car> getCarList() {
+        return cars;
     }
 
     void startEngines() {

@@ -1,6 +1,9 @@
 package Components;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
 public abstract class Car extends Vehicle {
     // Initiate variables
@@ -14,6 +17,14 @@ public abstract class Car extends Vehicle {
         this.engine = new Engine(enginePower);
         this.nrDoors = nrDoors;
         this.modelName = modelName;
+    }
+
+    public Image getImage()  {
+        try {
+            return ImageIO.read(new File("pics/modelName.jpg".replace("modelName", this.modelName)));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /** Get the number of doors a car has */

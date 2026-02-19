@@ -1,6 +1,9 @@
 package Components;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.File;
+import java.util.Objects;
 
 /** Reference https://sv.wikipedia.org/wiki/Fordon for our defenition of vehicle */
 
