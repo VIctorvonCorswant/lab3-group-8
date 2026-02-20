@@ -27,12 +27,16 @@ public class Engine {
         }
     }
 
+    /** Engine specific turbo off */
     public void setTurboOn(){turboOn = true;}
 
+    /** Engine specific turbo on */
     public void setTurboOff(){turboOn = false;}
 
+    /** Engine specific set trim factor */
     public void setTrimFactor(double trimFactor) {this.trimFactor = trimFactor;}
 
+    /** Engine specific set turbo factor */
     public void setTurboFactor(double turboFactor) {this.turboFactor = turboFactor;}
 
     /** Get engine power */

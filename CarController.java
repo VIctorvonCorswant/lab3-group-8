@@ -56,9 +56,9 @@ public class CarController {
         public void actionPerformed(ActionEvent e) {
             for (Car car : cars) {
                 int panelWidth = frame.drawPanel.getWidth()-(100); // Added minor offsets to prevent the cars from disappearing off the screen
-                int panelheight = frame.drawPanel.getHeight()-(60);
+                int panelHeight = frame.drawPanel.getHeight()-(60);
                 car.move();
-                car.checkBounds(panelWidth,panelheight);
+                car.checkBounds(panelWidth,panelHeight);
                 int x = (int) Math.round(car.getCoordinates().x);
                 int y = (int) Math.round(car.getCoordinates().y);
                 frame.drawPanel.moveit(x, y);
@@ -121,6 +121,7 @@ public class CarController {
     void turnRight() {
         for (Car car : cars) {car.turnRight();}}
 
+    /* This is a debug to show the SAAB's speed in the GUI **/
     double getCurrentSpeed() {
         for (Car car : cars) {
             if (car instanceof Components.Saab95) {
