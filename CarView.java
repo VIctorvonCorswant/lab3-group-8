@@ -173,6 +173,16 @@ public class CarView extends JFrame{
             public void actionPerformed(ActionEvent e) {carC.turnRight();}
         });
 
+        lowerBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {carC.lowerTrailer();}
+        });
+
+        liftBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {carC.raiseTrailer();}
+        });
+
         new javax.swing.Timer(500,new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

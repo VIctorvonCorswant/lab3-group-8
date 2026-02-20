@@ -8,7 +8,7 @@ import java.util.Objects;
 /** Reference https://sv.wikipedia.org/wiki/Fordon for our defenition of vehicle */
 
 public abstract class Vehicle {
-    public double currentSpeed;
+    protected double currentSpeed;
     public Color color;
 
     protected Point coordinates = new Point(0, 0);
@@ -22,6 +22,7 @@ public abstract class Vehicle {
 
     /** Get current speed */
     public double getCurrentSpeed() {return Math.round(currentSpeed);}
+
 
     /** Get color */
     public Color getColor() {return color;}
@@ -50,6 +51,8 @@ public abstract class Vehicle {
         coordinates.x = inputCords.x;
         coordinates.y = inputCords.y;
     }
+
+    public void stopVehicle() {this.currentSpeed = 0;}
 
     /** Calculate the distance between two vehicles */
     public double getGeoDistance(Vehicle v1, Vehicle v2){

@@ -13,6 +13,7 @@ public class Workshop<M extends Car> {
     protected int facilitySize = 5;
     public String workshopName;
     public Point coordinates = new Point(300, 300);
+    private double catchRadius = 80.0;
 
 
     public Workshop(int facilitySize, String workshopName, Point coords) {
@@ -28,19 +29,21 @@ public class Workshop<M extends Car> {
 
     public boolean addCarToWorkshop(M car) {
         // Compile-time safety: only cars typed with the workshop's model type M can be passed
-        if (facility.size() < facilitySize) {
+        if (facility.size() < facilitySize && !facility.contains(car)) {
             facility.add(car);
+            car.stopVehicle();
+            car.engine.stopEngine();
             return true;
         }
         return false;
     }
 
-    public void addVehicleToWorkshop(ArrayList<M> cars) {
+    public void checkAddVehicleToWorkshop(ArrayList<M> cars) {
         for (M car : cars) {
             double distX = Math.abs(this.coordinates.getX() - car.getCoordinates().getX());
             double distY = Math.abs(this.coordinates.getY() - car.getCoordinates().getY());
 
-            if (distX < 100 && distY < 100) {
+            if (distX < catchRadius && distY < catchRadius) {
                 boolean added = this.addCarToWorkshop(car);
                 if (added) {
                     car.forcePosition(new Point(
@@ -48,6 +51,20 @@ public class Workshop<M extends Car> {
                             (int)this.coordinates.getY()
                     ));
                     System.out.println("RAHHHHH: " + this.getModelName());
+                }
+            }
+        }
+    }
+
+    public void checkRemoveVehicleFromWorkshop(ArrayList<M> cars) {
+        for (M car : cars) {
+            if(facility.contains(car)){
+                double distX = Math.abs(this.coordinates.getX() - car.getCoordinates().getX());
+                double distY = Math.abs(this.coordinates.getY() - car.getCoordinates().getY());
+
+                if (distX > 2 && distY < 2) {
+                    this.removeCarFromWorkshop(car);
+                    System.out.println("begone: " + this.getModelName());
                 }
             }
         }
@@ -62,6 +79,7 @@ public class Workshop<M extends Car> {
     }
 
     public boolean removeCarFromWorkshop(M car) {
+        car.forceMove(catchRadius + 1);
         return facility.remove(car);
     }
 

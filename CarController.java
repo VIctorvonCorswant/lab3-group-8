@@ -66,7 +66,8 @@ public class CarController {
                 frame.drawPanel.repaint();
             }
             for (Workshop workshop : workshops) {
-                workshop.addVehicleToWorkshop(cars);
+                workshop.checkAddVehicleToWorkshop(cars);
+                workshop.checkRemoveVehicleFromWorkshop(cars);
             }
         }
     }
@@ -121,7 +122,23 @@ public class CarController {
     void turnRight() {
         for (Car car : cars) {car.turnRight();}}
 
-    /* This is a debug to show the SAAB's speed in the GUI **/
+    void lowerTrailer() {
+        for (Car car : cars)
+        {
+            if(car instanceof Components.Scania){
+                ((Scania) car).lowerBed(35.0);
+            }
+        }
+    }
+    void raiseTrailer() {
+        for (Car car : cars)
+        {
+            if(car instanceof Components.Scania){
+                ((Scania) car).raiseBed(35.0);
+            }
+        }
+    }
+
     double getCurrentSpeed() {
         for (Car car : cars) {
             if (car instanceof Components.Saab95) {
