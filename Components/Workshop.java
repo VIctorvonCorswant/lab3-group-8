@@ -35,23 +35,23 @@ public class Workshop<M extends Car> {
         return false;
     }
 
-//    void addVehicleToWorkshop(ArrayList cars) {
-//        for (Car car : cars) {
-//            double distX = Math.abs(workshop.coordinates.getX() - car.getCoordinates().getX());
-//            double distY = Math.abs(workshop.coordinates.getY() - car.getCoordinates().getY());
-//
-//            if (distX < 100 && distY < 100) {
-//                boolean added = workshop.addCarToWorkshop(car);
-//                if (added) {
-//                    car.forcePosition(new Point(
-//                            (int)workshop.coordinates.getX(),
-//                            (int)workshop.coordinates.getY()
-//                    ));
-//                    System.out.println("RAHHHHH: " + workshop.getModelName());
-//                }
-//            }
-//        }
-//    }
+    public void addVehicleToWorkshop(ArrayList<M> cars) {
+        for (M car : cars) {
+            double distX = Math.abs(this.coordinates.getX() - car.getCoordinates().getX());
+            double distY = Math.abs(this.coordinates.getY() - car.getCoordinates().getY());
+
+            if (distX < 100 && distY < 100) {
+                boolean added = this.addCarToWorkshop(car);
+                if (added) {
+                    car.forcePosition(new Point(
+                            (int)this.coordinates.getX(),
+                            (int)this.coordinates.getY()
+                    ));
+                    System.out.println("RAHHHHH: " + this.getModelName());
+                }
+            }
+        }
+    }
 
     public Image getImage()  {
         try {

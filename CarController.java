@@ -59,12 +59,14 @@ public class CarController {
                 int panelheight = frame.drawPanel.getHeight()-(60);
                 car.move();
                 car.checkBounds(panelWidth,panelheight);
-//                car.addVehicle
                 int x = (int) Math.round(car.getCoordinates().x);
                 int y = (int) Math.round(car.getCoordinates().y);
                 frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
+            }
+            for (Workshop workshop : workshops) {
+                workshop.addVehicleToWorkshop(cars);
             }
         }
     }
