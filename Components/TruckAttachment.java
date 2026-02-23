@@ -57,7 +57,7 @@ public class TruckAttachment<T> {
         occupation.add((T) object);
     }
     
-    /** Unload object from Attachment */
+    /** Unload ob   ject from Attachment */
     public Object unloadObject() {
         if (!occupation.isEmpty() && !this.getTrailerSafe()) {
             return occupation.removeLast();
