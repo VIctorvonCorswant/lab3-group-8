@@ -11,8 +11,8 @@ public class Workshop<M extends Car> {
 
     List<M> facility = new ArrayList<>();
     protected int facilitySize = 5;
-    public String workshopName;
-    public Point coordinates = new Point(300, 300);
+    private String workshopName;
+    private Point coordinates = new Point(300, 300);
     private double catchRadius = 80.0;
 
 
@@ -50,7 +50,7 @@ public class Workshop<M extends Car> {
                             (int)this.coordinates.getX(),
                             (int)this.coordinates.getY()
                     ));
-                    System.out.println("RAHHHHH: " + this.getModelName());
+                    System.out.println(this.getModelName() + " is now in the workshop " + workshopName);
                 }
             }
         }
