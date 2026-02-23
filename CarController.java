@@ -56,14 +56,14 @@ public class CarController {
         public void actionPerformed(ActionEvent e) {
             for (Car car : cars) {
                 int panelWidth = frame.drawPanel.getWidth()-(100); // Added minor offsets to prevent the cars from disappearing off the screen
-                int panelHeight = frame.drawPanel.getHeight()-(60);
+                int panelHeight = frame.drawPanel.getHeight()-(60); //TODO: this value will be gotten from the constructor in the engineSimulation
                 car.move();
                 car.checkBounds(panelWidth,panelHeight);
                 int x = (int) Math.round(car.getCoordinates().x);
                 int y = (int) Math.round(car.getCoordinates().y);
                 frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
-                frame.drawPanel.repaint();
+                frame.drawPanel.repaint(); // TODO: this is weird
             }
             for (Workshop workshop : workshops) {
                 workshop.checkAddVehicleToWorkshop(cars);

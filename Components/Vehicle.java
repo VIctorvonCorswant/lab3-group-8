@@ -12,7 +12,7 @@ public abstract class Vehicle {
     public Color color;
 
     protected Point coordinates = new Point(0, 0);
-    public double direction = 0;
+    protected double direction = 0;
 
     public Vehicle(Color color, Point coordinates, double direction) {
         this.color = color;

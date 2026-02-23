@@ -12,7 +12,7 @@ public class VolvoFH16 extends Truck implements Movable, Turbo {
     public boolean engineOn = false;
 
     /** Initialize the constructor */
-    public VolvoFH16(Color color, double enginePower, int trailerSize, Point coordinates ) {
+    public VolvoFH16(Color color, double enginePower, int trailerSize, Point coordinates) {
         super(color, enginePower, 2, "VolvoFH16", coordinates);
         this.trailer = new TruckAttachment<>(trailerSize);
         this.engine.setTurboFactor(1.3);
@@ -52,7 +52,7 @@ public class VolvoFH16 extends Truck implements Movable, Turbo {
         if(getCurrentSpeed() == 0){
             Car car = (Car) trailer.unloadObject();
             // Unload the car behind the truck, based on the current direction of the truck
-            car.direction = (this.direction + Math.toRadians(180)) %  (2*Math.PI);
+            car.setDirection((this.direction + Math.toRadians(180)) %  (2*Math.PI));
             car.forceMove(5);
             //car.coordinates = new Point(this.coordinates.x, this.coordinates.y);
             return (Car) car;
@@ -81,7 +81,7 @@ public class VolvoFH16 extends Truck implements Movable, Turbo {
             super.turnLeft();
             // Turn all cars on the trailer with the truck
             for (Car car : trailer.occupation) {
-                car.direction = this.direction;
+                car.setDirection(this.direction);
             }
         }
     }
