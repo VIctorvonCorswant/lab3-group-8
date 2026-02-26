@@ -11,28 +11,24 @@ public abstract class Car extends Vehicle {
 
     public Car(Color color, Double enginePower, int nrDoors, String modelName, Point coordinates, double direction) {
         // All vehicles have color and a position
-        super(color, coordinates, direction);
+        super(coordinates, direction, nrDoors, modelName, color);
         this.engine = new Engine(enginePower);
-        this.nrDoors = nrDoors;
-        this.modelName = modelName;
     }
 
     public Image getImage()  {
         try {
-            return ImageIO.read(new File("pics/modelName.jpg".replace("modelName", this.modelName)));
+            return ImageIO.read(new File("pics/modelName.jpg".replace("modelName", this.attribute.getModelName())));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     /** Get the number of doors a car has */
-    public int getNrDoors(){
-        return nrDoors;
-    }
+    public int getNrDoors(){this.attribute.getNrDoors();} //Varför gnäller denna :sob:
 
     /** Get the model name of a car */
     public String getModelName(){
-        return modelName;
+        return this.attribute.getModelName();
     }
 
     /** Accelerate by pressing the gas pedal the car */
@@ -56,7 +52,7 @@ public abstract class Car extends Vehicle {
     /** Changes the speed of the vehicle */
     protected void updateEngineSpeed(double amount) {
         if (Math.abs(amount) >= 0 && Math.abs(amount) <= 1){
-            currentSpeed += engine.calculateSpeed((amount));
+            this.movement.setCurrentSpeed(this.movement.getCurrentSpeed() + engine.calculateSpeed((amount)));
         }
     }
 }

@@ -52,7 +52,7 @@ public class VolvoFH16 extends Truck implements Movable, Turbo {
         if(getCurrentSpeed() == 0){
             Car car = (Car) trailer.unloadObject();
             // Unload the car behind the truck, based on the current direction of the truck
-            car.setDirection((this.direction + Math.toRadians(180)) %  (2*Math.PI));
+            car.setDirection((this.movement.getDirection() + Math.toRadians(180)) %  (2*Math.PI));
             car.forceMove(5);
             //car.coordinates = new Point(this.coordinates.x, this.coordinates.y);
             return (Car) car;
@@ -71,7 +71,7 @@ public class VolvoFH16 extends Truck implements Movable, Turbo {
             super.move();
             // Move all cars on the trailer with the truck
             for (Car car : trailer.occupation) {
-                car.coordinates = this.getCoordinates();
+                car.movement.setCoordinates(this.getCoordinates());
             }
         }
     }
@@ -81,7 +81,7 @@ public class VolvoFH16 extends Truck implements Movable, Turbo {
             super.turnLeft();
             // Turn all cars on the trailer with the truck
             for (Car car : trailer.occupation) {
-                car.setDirection(this.direction);
+                car.setDirection(this.movement.getDirection());
             }
         }
     }
