@@ -92,7 +92,7 @@ public class VolvoFH16 extends Truck implements Movable, Turbo {
             // Turn all cars on the trailer with the truck
             for (Car car : trailer.occupation) {
 
-                car.setDirection(this.direction);
+                car.setDirection(this.movement.getDirection());); // WTF gnäller den ens på här
             }
         }
     }

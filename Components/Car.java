@@ -6,9 +6,7 @@ import java.io.File;
 import java.io.IOException;
 
 public abstract class Car extends Vehicle {
-    // Initiate variables
-    public int nrDoors;
-    public String modelName;
+    // Initiate variables and inheritance
     public Engine engine;
 
     public Car(Color color, Double enginePower, int nrDoors, String modelName, Point coordinates, double direction) {
