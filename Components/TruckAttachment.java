@@ -5,8 +5,6 @@ import java.util.List;
 
 
 public class TruckAttachment<T> {
-    List<T> occupation;
-    private int occupationSize;
     // boolean trailerSafe = true;
     private double trailerAngle = 0;
     private double trailerMaxAngle;
