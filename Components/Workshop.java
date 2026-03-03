@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Workshop<M extends Car> {
-    private final Class<M> supportedClass;
+    private final Class<M> supportedModel;
     List<M> facility = new ArrayList<>();
     protected int facilitySize = 5;
     private String workshopName;
@@ -16,8 +16,17 @@ public class Workshop<M extends Car> {
     private double catchRadius = 80.0;
 
 
-    public Workshop(Class<M> supportedClass, int facilitySize, String workshopName, Point coords) {
-        this.supportedClass = supportedClass;
+    public Workshop(int facilitySize, String workshopName, Point coords) {
+        this.supportedModel = (Class<M>) Car.class; // Default to Car if no specific model is provided
+        this.facilitySize = facilitySize;
+        this.workshopName = workshopName;
+        this.coordinates.x = coords.x;
+        this.coordinates.y = coords.y;
+    }
+
+    // Overloaded constructor to specify the supported model type
+    public Workshop(Class<M> supportedModel, int facilitySize, String workshopName, Point coords) {
+        this.supportedModel = supportedModel;
         this.facilitySize = facilitySize;
         this.workshopName = workshopName;
         this.coordinates.x = coords.x;
@@ -29,7 +38,7 @@ public class Workshop<M extends Car> {
     }
 
     public boolean addCarToWorkshop(M car) {
-        if (!supportedClass.isInstance(car)) {
+        if (!supportedModel.isInstance(car)) {
             return false;
         }
         // Compile-time safety: only cars typed with the workshop's model type M can be passed
