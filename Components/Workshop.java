@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Workshop<M extends Car> {
-
+    private final Class<M> supportedClass;
     List<M> facility = new ArrayList<>();
     protected int facilitySize = 5;
     private String workshopName;
@@ -16,7 +16,8 @@ public class Workshop<M extends Car> {
     private double catchRadius = 80.0;
 
 
-    public Workshop(int facilitySize, String workshopName, Point coords) {
+    public Workshop(Class<M> supportedClass, int facilitySize, String workshopName, Point coords) {
+        this.supportedClass = supportedClass;
         this.facilitySize = facilitySize;
         this.workshopName = workshopName;
         this.coordinates.x = coords.x;
@@ -28,6 +29,9 @@ public class Workshop<M extends Car> {
     }
 
     public boolean addCarToWorkshop(M car) {
+        if (!supportedClass.isInstance(car)) {
+            return false;
+        }
         // Compile-time safety: only cars typed with the workshop's model type M can be passed
         if (facility.size() < facilitySize && !facility.contains(car)) {
             facility.add(car);
@@ -79,7 +83,7 @@ public class Workshop<M extends Car> {
     }
 
     public boolean removeCarFromWorkshop(M car) {
-        car.forceMove(catchRadius + 1);
+        car.forceMove(catchRadius + 10);
         return facility.remove(car);
     }
 

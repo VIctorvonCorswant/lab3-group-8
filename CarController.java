@@ -1,4 +1,5 @@
 import Components.*;
+import org.junit.Test;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,8 +40,8 @@ public class CarController {
 
         cc.cars.add(new Components.Scania(Color.BLUE, 240.0, new Point (0, 200)));
 
-        cc.workshops.add(new Components.Workshop<Volvo240>(3, "VolvoBrand", new Point(300, 200))); //VolvoBrand
-        cc.workshops.add(new Components.Workshop<>(3, "VolvoWorkshop", new Point(200, 350))); //Our Volvo Workshop
+        cc.workshops.add(new Components.Workshop<Volvo240>(Volvo240.class,3, "VolvoBrand", new Point(300, 200))); //VolvoBrand
+        cc.workshops.add(new Components.Workshop<>(Car.class,3, "VolvoWorkshop", new Point(200, 350))); //Our Volvo Workshop
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
