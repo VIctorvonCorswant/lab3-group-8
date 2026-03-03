@@ -66,7 +66,7 @@ public abstract class Vehicle {
     }
 
     /** Rotate the vehicle right via subtracting 30° */
-    public void turnRight(){this.movement.setDirection(this.movement.getDirection() + Math.toRadians(30)) % (2*Math.PI)); // Gnäller i @override funktioner
+    public void turnRight(){this.movement.setDirection((this.movement.getDirection() + Math.toRadians(30)) % (2*Math.PI)); // Gnäller i @override funktioner
     }
 
     public void checkBounds(int maxX, int maxY) {

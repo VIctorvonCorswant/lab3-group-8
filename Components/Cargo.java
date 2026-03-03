@@ -12,10 +12,12 @@ public class Cargo<T> {
 
     public Cargo(int occupationSize) {
         this.occupationSize = occupationSize;
-        this.occupation = new ArrayList<>(occupationSize);
+        this.occupation = new ArrayList<T>(occupationSize);
     }
 
     public Cargo() {this.occupation = new  ArrayList<>(1);}
+
+    public ArrayList<T> getCargo() {return (ArrayList<T>) this.occupation;}
 
     public int getOccupationSize() {return occupationSize;}
 
@@ -27,9 +29,12 @@ public class Cargo<T> {
         this.occupation.add((T) object);
     }
 
-    public Object unloadObject(Object object) {
-        this.occupation.remove(object);
-        return object;
+    public Object unloadObject() {
+        return this.occupation.removeLast();
+    }
+
+    public boolean isListEmpty() {
+        return this.occupation.isEmpty();
     }
 
 }

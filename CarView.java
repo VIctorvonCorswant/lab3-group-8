@@ -21,8 +21,12 @@ public class CarView extends JFrame{
 
     // The controller member
     CarController carC;
-
     DrawPanel drawPanel;
+
+    public void moveObject(int x, int y){
+        drawPanel.moveit(x, y);
+        drawPanel.repaint();
+    }
 
     JPanel controlPanel = new JPanel();
 
@@ -36,8 +40,6 @@ public class CarView extends JFrame{
     JSpinner gasSpinner = new JSpinner();
     int gasAmount = 0;
     JLabel gasLabel = new JLabel("Amount of gas");
-
-
 
     JButton gasButton = new JButton("Gas");
     JButton brakeButton = new JButton("Brake");
@@ -189,11 +191,6 @@ public class CarView extends JFrame{
                 //AddVehicleToWorkshop();
             }
         });
-
-
-        //Lägg till att Scanian kan sänka och höja
-
-
 
 
         // Make the frame pack all it's components by respecting the sizes if possible.

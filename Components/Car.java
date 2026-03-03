@@ -24,7 +24,7 @@ public abstract class Car extends Vehicle {
     }
 
     /** Get the number of doors a car has */
-    public int getNrDoors(){this.attribute.getNrDoors();} //Varför gnäller denna :sob:
+    public int getNrDoors(){return this.attribute.getNrDoors();} //Varför gnäller denna :sob:
 
     /** Get the model name of a car */
     public String getModelName(){

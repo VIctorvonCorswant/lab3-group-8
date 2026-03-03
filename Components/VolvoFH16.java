@@ -14,7 +14,7 @@ public class VolvoFH16 extends Truck implements Movable, Turbo {
     /** Initialize the constructor */
     public VolvoFH16(Color color, double enginePower, int trailerSize, Point coordinates) {
         super(color, enginePower, 2, "VolvoFH16", coordinates);
-        this.trailer = new TruckAttachment<>(trailerSize);
+        this.trailer = new TruckAttachment<Car>(trailerSize);
         this.engine.setTurboFactor(1.3);
         //this.trailerSize = trailerSize;
         //this.trailerSafe = true; // The trailer is safe to drive with by default
@@ -34,7 +34,7 @@ public class VolvoFH16 extends Truck implements Movable, Turbo {
         }
     }
 
-    public List getTrailer() {return trailer.occupation;}
+    // public List getTrailer() {return trailer.occupation;}
 
     /** Load car to trailer */
     public <T extends Car & Towable> T loadCar(T car){
@@ -70,7 +70,7 @@ public class VolvoFH16 extends Truck implements Movable, Turbo {
         if(this.trailerSafe) {
             super.move();
             // Move all cars on the trailer with the truck
-            for (Car car : trailer.occupation) {
+            for (Car car : trailer.getCargo()) {
                 car.movement.setCoordinates(this.getCoordinates());
             }
         }
@@ -80,7 +80,7 @@ public class VolvoFH16 extends Truck implements Movable, Turbo {
         if(this.trailerSafe) {
             super.turnLeft();
             // Turn all cars on the trailer with the truck
-            for (Car car : trailer.occupation) {
+            for (Car car : trailer.getCargo()) {
                 car.setDirection(this.movement.getDirection());
             }
         }
@@ -90,9 +90,9 @@ public class VolvoFH16 extends Truck implements Movable, Turbo {
         if(this.trailerSafe) {
             super.turnRight();
             // Turn all cars on the trailer with the truck
-            for (Car car : trailer.occupation) {
+            for (Car car : trailer.getCargo()) {
 
-                car.setDirection(this.movement.getDirection());); // WTF gnäller den ens på här
+                car.setDirection(this.movement.getDirection());
             }
         }
     }
