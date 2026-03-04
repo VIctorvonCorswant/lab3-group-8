@@ -23,7 +23,9 @@ public class SimulationEngine {
 
         cc = new CarController();
 
-        frame = new CarView("-... .- -- ... .",cc);
+        frame = new CarView("Bamses lekstuga",cc);
+
+        cc.frame = frame;
 
         // Start the timer
         timer.start();

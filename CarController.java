@@ -17,19 +17,19 @@ public class CarController {
 
     // A list of cars, modify if needed
     ArrayList<Car> cars;
-    ArrayList workshops;
+    ArrayList<Workshop> workshops;
 
     public CarController() {
     // Add more cars in the constructor
 
         // Start a new view and send a reference of self
-        frame = new CarView("CarSim 1.0", this);
+        // frame = new CarView("Bamses lekstuga", this);
 
         this.cars = new ArrayList<>();
         this.cars.add(new Components.Volvo240(Color.BLUE, 120.0, new Point (0, 0)));
         
         this.workshops = new ArrayList<Workshop>();
-        this.workshops.add(workshops.add(new Components.Workshop<Volvo240>(Volvo240.class,3, "VolvoBrand", new Point(300, 200))));
+        this.workshops.add(new Components.Workshop<Volvo240>(Volvo240.class,3, "VolvoBrand", new Point(300, 200)));
     }
 
 
