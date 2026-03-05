@@ -1,11 +1,10 @@
-import Components.Car;
-import Components.Volvo240;
-import Components.Workshop;
+import Components.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class SimulationEngine {
 
@@ -22,6 +21,7 @@ public class SimulationEngine {
         // Instance of this class
 
         cc = new CarController();
+        SimulationEngine.registerObserver(cc);
 
         frame = new CarView("-... .- -- ... . ... lekstuga",cc);
 
@@ -32,25 +32,14 @@ public class SimulationEngine {
     }
 
 
-    /* Each step the TimerListener moves all the cars in the list and tells the
-     * view to update its images. Change this method to your needs.
-     * */
+    /*
+    Each step the TimerListener is just a tick source, each tick it tells
+    CarController to update the cars and then tells the view to update its images.
+    */
     private static class TimerListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            Point panelDim = cc.getPanelDim();
-            for (Car car : cc.getCarList()) {
-                car.move();
-                car.checkBounds(panelDim.x-(100), panelDim.y-(300));
-
-                int x = (int) Math.round(car.getCoordinates().x);
-                int y = (int) Math.round(car.getCoordinates().y);
-
-                cc.moveObject(x,y);
-                //cc.frame.drawPanel.moveit(x, y);
-                // repaint() calls the paintComponent method of the panel
-                //cc.frame.drawPanel.repaint(); // TODO: this is weird
-            }
+            notifyObservers();
 
             for (Workshop workshop : cc.getWorkshops()) {
                 checkAddCarToWorkshop(workshop);
@@ -85,10 +74,46 @@ public class SimulationEngine {
 
                 if (distX > 2 || distY > 2) {
                     workshop.removeCarFromWorkshop(car);
-                    System.out.println(workshop.getModelName() + " BEGONE FROM " + workshop.getModelName());
+                    System.out.println(car.getModelName() + " has left " + workshop.getModelName());
                 }
             }
         }
     }
 
+    // static observer list to manage observers for the SimulationEngine
+    private static ArrayList<Observer> observers = new ArrayList<Observer>();
+
+    // A static Subject proxy representing SimulationEngine for observers' update(Subject s)
+    private static final Subject ENGINE_SUBJECT = new Subject() {
+
+        @Override
+        public void registerObserver(Observer o) {
+            SimulationEngine.registerObserver(o);
+        }
+
+        @Override
+        public void removeObserver(Observer o) {
+            SimulationEngine.removeObserver(o);
+        }
+
+        @Override
+        public void notifyObservers() {
+            SimulationEngine.notifyObservers();
+        }
+    };
+
+    public static Subject getEngineSubject() {
+        return ENGINE_SUBJECT;
+    }
+    public static void registerObserver(Observer o) {
+        observers.add(o);
+    }
+    public static void removeObserver(Observer o) {
+        observers.remove(o);
+    }
+    public static void notifyObservers() {
+        for (Observer o: observers) {
+            o.update(ENGINE_SUBJECT); // pass the proxy instead of the actual SimEngine (`this`)
+        }
+    }
 }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 * Its responsibilities is to make the buttons clickable and relay command to appropriate functionss
  */
 
-public class CarController {
+public class CarController implements Observer{
     //member fields
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
@@ -21,9 +21,6 @@ public class CarController {
 
     public CarController() {
     // Add more cars in the constructor
-
-        // Start a new view and send a reference of self
-        // frame = new CarView("Bamses lekstuga", this);
 
         this.cars = new ArrayList<>();
         this.cars.add(new Components.Volvo240(Color.BLUE, 120.0, new Point (0, 0)));
@@ -128,4 +125,26 @@ public class CarController {
         return 0;
     }
 
+    /*
+    Move the whole update logic to the controller, this is where the model
+    and view are connected. Each time the timer ticks, the controller
+    updates the cars and then tells the view to update its images.
+    */
+    @Override
+    public void update(Subject s) {
+        if (s == SimulationEngine.getEngineSubject()) {
+            if (frame == null) return;
+
+            Point panelDim = getPanelDim();
+            for (Car car : getCarList()) {
+                car.move();
+                car.checkBounds(panelDim.x-(100), panelDim.y-(300));
+
+                int x = (int) Math.round(car.getCoordinates().x);
+                int y = (int) Math.round(car.getCoordinates().y);
+
+                moveObject(x,y);
+            }
+        }
+    }
 }

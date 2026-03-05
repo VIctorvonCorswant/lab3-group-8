@@ -43,7 +43,7 @@ public class Movement implements Subject {
     @Override
     public void notifyObservers() {
         for (Observer observer: observers) {
-            observer.update();
+            observer.update(this);
         }
     }
 

@@ -35,6 +35,9 @@ public class DrawPanel extends JPanel implements Observer {
 
     public DrawPanel(int x, int y, CarController cc) {
         this.carC = cc;
+        for (Car car : cc.getCarList()){
+            car.registerObserver((Observer) this);
+        }
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x,y));
         this.setBackground(Color.DARK_GRAY);
@@ -57,15 +60,8 @@ public class DrawPanel extends JPanel implements Observer {
     }
 
     @Override
-    public void update() {
-        this.repaint();
+    public void update(Subject s) {
+        repaint();
     }
-
-
-
-    //g.drawImage(carImage, objectPoint.x, objectPoint.y, null);
-
-        //g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
-        // g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
 }
 

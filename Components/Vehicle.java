@@ -32,6 +32,9 @@ public abstract class Vehicle {
     protected void setDirection(double direction) {this.movement.setDirection(direction);
     }
 
+    public void registerObserver(Observer o) {this.movement.registerObserver(o);}
+    public void removeObserver(Observer o) {this.movement.removeObserver(o);}
+
     /** Set the new x and y position based on the direction and current speed */
     public void move(){
         this.movement.changePosition();
@@ -43,7 +46,7 @@ public abstract class Vehicle {
         this.movement.getCoordinates().y += (int) (Math.sin(this.movement.getDirection()) * distance);
     }
 
-    //** Force position of the vehicle */
+    /** Force position of the vehicle */
     public void forcePosition(Point inputCords){
         this.movement.getCoordinates().x = inputCords.x;
         this.movement.getCoordinates().y = inputCords.y;
