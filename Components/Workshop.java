@@ -37,6 +37,14 @@ public class Workshop<M extends Car> {
         return workshopName;
     }
 
+    public double getCatchRadius() {
+        return catchRadius;
+    }
+
+    public ArrayList getCarsInWorkshop() {
+        return new ArrayList<>(facility);
+    }
+
     public boolean addCarToWorkshop(M car) {
         if (!supportedModel.isInstance(car)) {
             return false;
@@ -49,38 +57,6 @@ public class Workshop<M extends Car> {
             return true;
         }
         return false;
-    }
-
-    public void checkAddVehicleToWorkshop(ArrayList<M> cars) {
-        for (M car : cars) {
-            double distX = Math.abs(this.coordinates.getX() - car.getCoordinates().getX());
-            double distY = Math.abs(this.coordinates.getY() - car.getCoordinates().getY());
-
-            if (distX < catchRadius && distY < catchRadius) {
-                boolean added = this.addCarToWorkshop(car);
-                if (added) {
-                    car.forcePosition(new Point(
-                            (int)this.coordinates.getX(),
-                            (int)this.coordinates.getY()
-                    ));
-                    System.out.println(this.getModelName() + " is now in the workshop " + workshopName);
-                }
-            }
-        }
-    }
-
-    public void checkRemoveVehicleFromWorkshop(ArrayList<M> cars) {
-        for (M car : cars) {
-            if(facility.contains(car)){
-                double distX = Math.abs(this.coordinates.getX() - car.getCoordinates().getX());
-                double distY = Math.abs(this.coordinates.getY() - car.getCoordinates().getY());
-
-                if (distX > 2 && distY < 2) {
-                    this.removeCarFromWorkshop(car);
-                    System.out.println("begone: " + this.getModelName());
-                }
-            }
-        }
     }
 
     public Image getImage()  {

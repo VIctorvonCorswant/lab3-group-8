@@ -49,16 +49,45 @@ public class SimulationEngine {
                 cc.moveObject(x,y);
                 //cc.frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
-                cc.frame.drawPanel.repaint(); // TODO: this is weird
+                //cc.frame.drawPanel.repaint(); // TODO: this is weird
             }
             for (Workshop workshop : cc.getWorkshops()) {
-                workshop.checkAddVehicleToWorkshop(cc.getCarList());
-                workshop.checkRemoveVehicleFromWorkshop(cc.getCarList());
+                checkAddCarToWorkshop(workshop);
+                checkRemoveCarFromWorkshop(workshop);
             }
         }
     }
 
-    private boolean checkAddCarToWorkshop(){
-        return true;
+    private static void checkAddCarToWorkshop(Workshop workshop) {
+        for (Car car : cc.getCarList()){
+            double distX = Math.abs(workshop.getCoordinates().getX() - car.getCoordinates().getX());
+            double distY = Math.abs(workshop.getCoordinates().getY() - car.getCoordinates().getY());
+
+            if (distX < workshop.getCatchRadius() && distY < workshop.getCatchRadius()) {
+                boolean added = workshop.addCarToWorkshop(car);
+                if (added) {
+                    car.forcePosition(new Point(
+                            (int)workshop.getCoordinates().getX(),
+                            (int)workshop.getCoordinates().getY()
+                    ));
+                    System.out.println(workshop.getModelName() + " is now in the workshop " + workshop.getModelName());
+                }
+            }
+        }
     }
+
+    private static void checkRemoveCarFromWorkshop(Workshop workshop) {
+        for (Car car : cc.getCarList()){
+            if(workshop.getCarsInWorkshop().contains(car)){
+                double distX = Math.abs(workshop.getCoordinates().getX() - car.getCoordinates().getX());
+                double distY = Math.abs(workshop.getCoordinates().getY() - car.getCoordinates().getY());
+
+                if (distX > 2 || distY > 2) {
+                    workshop.removeCarFromWorkshop(car);
+                    System.out.println(workshop.getModelName() + " is now removed from " + workshop.getModelName());
+                }
+            }
+        }
+    }
+
 }
