@@ -14,21 +14,27 @@ public class CarController implements Observer{
     //member fields
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
+    RandomCar randomCar;
 
     // A list of cars, modify if needed
     ArrayList<Car> cars;
+    private static ArrayList<Car> randomCarList;
     ArrayList<Workshop> workshops;
 
     public CarController() {
-    // Add more cars in the constructor
-
         this.cars = new ArrayList<>();
-        this.cars.add(new Components.Volvo240(Color.BLUE, 120.0, new Point (0, 0)));
+        //this.cars.add(new Components.Volvo240(Color.BLUE, 120.0, new Point (0, 0)));
         
         this.workshops = new ArrayList<Workshop>();
         this.workshops.add(new Components.Workshop<Volvo240>(Volvo240.class,3, "VolvoBrand", new Point(300, 200)));
     }
 
+    private Car generateCar(){
+        if(this.cars.isEmpty()){
+            this.randomCar = new RandomCar(getPanelDim());
+        }
+        return this.randomCar.randomizeCar();
+    }
 
 /*
     cars.add(new Components.Volvo240(Color.BLUE, 120.0, new Point (0, 0)));
@@ -55,6 +61,33 @@ public class CarController implements Observer{
     public Point getPanelDim(){
         return new Point(frame.getWidth(),frame.getHeight());
     }
+
+    void addCar() {
+        if (this.cars.size() < 10) {
+            Car newCar = generateCar();
+            this.cars.add(newCar);
+            newCar.registerObserver((Observer) frame.drawPanel);
+
+        }
+    }
+
+    void removeCar() {
+        if (this.cars.size() > 0) {
+            Car car = this.cars.removeFirst();
+
+            // Remove car if car is in workshop
+            for(Workshop workshop : workshops){
+                if (workshop.getCarsInWorkshop().contains(car)){
+                    workshop.removeCarFromWorkshop(car);
+                }
+            }
+
+            car.removeObserver(frame.drawPanel);
+        }
+        frame.repaint();
+
+    }
+
 
     void startEngines() {
         for (Car car : cars) {car.engine.startEngine();}}

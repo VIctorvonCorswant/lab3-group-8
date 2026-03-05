@@ -67,7 +67,7 @@ public class VolvoFH16 extends Truck implements Movable, Turbo {
 
     @Override
     public void move(){
-        if(this.trailerSafe) {
+        if(this.trailer.getTrailerSafe()) {
             super.move();
             // Move all cars on the trailer with the truck
             for (Car car : trailer.getCargo()) {
@@ -76,8 +76,9 @@ public class VolvoFH16 extends Truck implements Movable, Turbo {
         }
     }
 
+    @Override
     public void turnLeft(){
-        if(this.trailerSafe) {
+        if(this.trailer.getTrailerSafe()) {
             super.turnLeft();
             // Turn all cars on the trailer with the truck
             for (Car car : trailer.getCargo()) {
@@ -86,8 +87,9 @@ public class VolvoFH16 extends Truck implements Movable, Turbo {
         }
     }
 
+    @Override
     public void turnRight(){
-        if(this.trailerSafe) {
+        if(this.trailer.getTrailerSafe()) {
             super.turnRight();
             // Turn all cars on the trailer with the truck
             for (Car car : trailer.getCargo()) {

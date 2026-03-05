@@ -4,8 +4,6 @@ import java.awt.*;
 
 public abstract class Truck extends Car {
 
-    protected boolean trailerSafe;
-
     protected Truck(Color color, Double enginePower, int nrDoors, String modelName, Point coordinates) {
         super(color, enginePower, nrDoors, modelName, coordinates, 0);
         engine.stopEngine();
@@ -13,7 +11,7 @@ public abstract class Truck extends Car {
 
     @Override
     public void gas(double amount) {
-        if (this.getCurrentSpeed() < engine.getEnginePower() && this.trailerSafe) {
+        if (this.getCurrentSpeed() < engine.getEnginePower()) {
             updateEngineSpeed(amount);
             this.move();
         } else {

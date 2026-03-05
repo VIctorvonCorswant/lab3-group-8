@@ -5,7 +5,6 @@ import java.util.List;
 
 
 public class TruckAttachment<T> {
-    // boolean trailerSafe = true;
     private double trailerAngle = 0;
     private double trailerMaxAngle;
     private Cargo occupation;
@@ -15,12 +14,14 @@ public class TruckAttachment<T> {
     public TruckAttachment(int size) {
         this.occupation = new <T>Cargo(size);
         this.trailerMaxAngle = 90;
+        this.trailerAngle = 0;
     }
 
     // Bed
     public TruckAttachment() {
         this.occupation = new <T>Cargo(1);
         this.trailerMaxAngle = 1;
+        this.trailerAngle = 0;
     }
 
     protected ArrayList<T> getCargo() {return (ArrayList<T>) this.occupation.getCargo();}
@@ -29,26 +30,29 @@ public class TruckAttachment<T> {
         return this.occupation.getOccupationSize();
     }
 
-    private boolean getTrailerSafe() {
-        return (this.trailerAngle == this.trailerMaxAngle);
-    }
-
     public double getTrailerAngle() {
         return this.trailerAngle;
+    }
+
+    public boolean getTrailerSafe() {
+        if (this.trailerAngle == 0) return true;
+        else return false;
     }
     
     /** Raise the trailer */
     public void raiseTrailer(double value){
-        if(!this.getTrailerSafe() && this.getTrailerSize() > this.occupation.getOccupationSize()) {
+        if(this.trailerAngle < this.trailerMaxAngle && this.getTrailerSize() > this.occupation.getOccupationSize()) {
             this.trailerAngle += Math.min(value, this.trailerMaxAngle);
         }
+        else this.trailerAngle = this.trailerMaxAngle;
     }
 
     /** Lower the trailer */
     public void lowerTrailer(double value) {
-        if(!this.getTrailerSafe() && this.getTrailerSize() > this.occupation.getOccupationSize()) {
+        if(this.trailerAngle > 0 && this.getTrailerSize() > this.occupation.getOccupationSize()) {
             this.trailerAngle -= Math.max(value, 0);
         }
+        else this.trailerAngle = 0;
     }
     
     /** Load object on attachment */
@@ -58,7 +62,7 @@ public class TruckAttachment<T> {
     
     /** Unload object from Attachment */
     public Object unloadObject() {
-        if (!this.occupation.isListEmpty() && !this.getTrailerSafe()) {
+        if (!this.occupation.isListEmpty() && getTrailerSafe()) {
             return occupation.unloadObject();
         }
         return null;

@@ -60,7 +60,6 @@ public class SimulationEngine {
                             (int)workshop.getCoordinates().getX(),
                             (int)workshop.getCoordinates().getY()
                     ));
-                    System.out.println(workshop.getModelName() + " is now in the workshop " + workshop.getModelName());
                 }
             }
         }
@@ -74,7 +73,6 @@ public class SimulationEngine {
 
                 if (distX > 2 || distY > 2) {
                     workshop.removeCarFromWorkshop(car);
-                    System.out.println(car.getModelName() + " has left " + workshop.getModelName());
                 }
             }
         }

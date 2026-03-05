@@ -54,6 +54,7 @@ public class Workshop<M extends Car> {
             facility.add(car);
             car.stopVehicle();
             car.engine.stopEngine();
+            System.out.println(car.getModelName() + " is now in the workshop " + this.getModelName());
             return true;
         }
         return false;
@@ -69,6 +70,7 @@ public class Workshop<M extends Car> {
 
     public boolean removeCarFromWorkshop(M car) {
         car.forceMove(catchRadius + 10);
+        System.out.println(car.getModelName() + " has left " + this.getModelName());
         return facility.remove(car);
     }
 
