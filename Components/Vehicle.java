@@ -34,8 +34,7 @@ public abstract class Vehicle {
 
     /** Set the new x and y position based on the direction and current speed */
     public void move(){
-        this.movement.getCoordinates().x += (int) (Math.cos(this.movement.getDirection()) * getCurrentSpeed());
-        this.movement.getCoordinates().y += (int) (Math.sin(this.movement.getDirection()) * getCurrentSpeed());
+        this.movement.changePosition();
     }
 
     /** Force move the vehicle forward by a certain distance */

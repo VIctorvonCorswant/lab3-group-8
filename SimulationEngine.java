@@ -23,7 +23,7 @@ public class SimulationEngine {
 
         cc = new CarController();
 
-        frame = new CarView("Bamses lekstuga",cc);
+        frame = new CarView("-... .- -- ... . ... lekstuga",cc);
 
         cc.frame = frame;
 
@@ -41,7 +41,7 @@ public class SimulationEngine {
             Point panelDim = cc.getPanelDim();
             for (Car car : cc.getCarList()) {
                 car.move();
-                car.checkBounds(panelDim.x-(100), panelDim.y-(60));
+                car.checkBounds(panelDim.x-(100), panelDim.y-(300));
 
                 int x = (int) Math.round(car.getCoordinates().x);
                 int y = (int) Math.round(car.getCoordinates().y);
@@ -51,6 +51,7 @@ public class SimulationEngine {
                 // repaint() calls the paintComponent method of the panel
                 //cc.frame.drawPanel.repaint(); // TODO: this is weird
             }
+
             for (Workshop workshop : cc.getWorkshops()) {
                 checkAddCarToWorkshop(workshop);
                 checkRemoveCarFromWorkshop(workshop);
@@ -84,7 +85,7 @@ public class SimulationEngine {
 
                 if (distX > 2 || distY > 2) {
                     workshop.removeCarFromWorkshop(car);
-                    System.out.println(workshop.getModelName() + " is now removed from " + workshop.getModelName());
+                    System.out.println(workshop.getModelName() + " BEGONE FROM " + workshop.getModelName());
                 }
             }
         }
