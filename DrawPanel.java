@@ -16,18 +16,10 @@ import javax.swing.*;
 public class DrawPanel extends JPanel implements Observer {
 
     CarController carC;
-/*
-    // Just a single image, TODO: Generalize
-    BufferedImage carImage;
-    BufferedImage workshopImage;
-*/
+
     // To keep track of a single car's position
     Point objectPoint = new Point();
-/*
-    BufferedImage volvoWorkshopImage;
-    Point volvoWorkshopPoint = new Point(300,300);
-*/
-    // TODO: Make this general for all cars
+
     void moveit(int x, int y){
         objectPoint.x = x;
         objectPoint.y = y;
@@ -44,18 +36,15 @@ public class DrawPanel extends JPanel implements Observer {
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself
-    // TODO: Change to suit your needs.
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (Car car : carC.getCarList()) {
-            Point p = car.getCoordinates();
-            g.drawImage(car.getImage(), p.x, p.y, null);
+            CarRenderer.render(g, car);
         }
 
         for (Workshop w : carC.getWorkshops()) {
-            Point p = w.getCoordinates();
-            g.drawImage(w.getImage(), p.x, p.y, null);
+            CarRenderer.render(g, w);
         }
     }
 
