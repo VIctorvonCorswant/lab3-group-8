@@ -27,8 +27,6 @@ public class SimulationEngine implements Subject {
         SimulationEngine engine = new SimulationEngine();
         engine.registerObserver(cc);
 
-        //SimulationEngine.registerObserver(cc);
-
         frame = new CarView("-... .- -- ... . ... lekstuga",cc);
 
         cc.frame = frame;
@@ -84,28 +82,6 @@ public class SimulationEngine implements Subject {
         }
     }
 
-//    // A static Subject proxy representing SimulationEngine for observers' update(Subject s)
-//    private static final Subject ENGINE_SUBJECT = new Subject() {
-//
-//        @Override
-//        public void registerObserver(Observer o) {
-//            SimulationEngine.registerObserver(o);
-//        }
-//
-//        @Override
-//        public void removeObserver(Observer o) {
-//            SimulationEngine.removeObserver(o);
-//        }
-//
-//        @Override
-//        public void notifyObservers() {
-//            SimulationEngine.notifyObservers();
-//        }
-//    };
-//
-//    public static Subject getEngineSubject() {
-//        return ENGINE_SUBJECT;
-//    }
     public void registerObserver(Observer o) {
         observers.add(o);
     }
