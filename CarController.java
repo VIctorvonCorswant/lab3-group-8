@@ -15,6 +15,7 @@ public class CarController implements Observer{
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     RandomCar randomCar;
+    int carSize = 10;
 
     // A list of cars, modify if needed
     ArrayList<Car> cars;
@@ -63,7 +64,7 @@ public class CarController implements Observer{
     }
 
     void addCar() {
-        if (this.cars.size() < 10) {
+        if (this.cars.size() < this.carSize) {
             Car newCar = generateCar();
             this.cars.add(newCar);
             newCar.registerObserver((Observer) frame.drawPanel);

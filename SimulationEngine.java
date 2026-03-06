@@ -17,6 +17,9 @@ public class SimulationEngine {
     private static CarController cc;
     private static CarView frame;
 
+    // static observer list to manage observers for the SimulationEngine
+    private static ArrayList<Observer> observers = new ArrayList<Observer>();
+
     public static void main(String[] args) {
         // Instance of this class
 
@@ -77,9 +80,6 @@ public class SimulationEngine {
             }
         }
     }
-
-    // static observer list to manage observers for the SimulationEngine
-    private static ArrayList<Observer> observers = new ArrayList<Observer>();
 
     // A static Subject proxy representing SimulationEngine for observers' update(Subject s)
     private static final Subject ENGINE_SUBJECT = new Subject() {

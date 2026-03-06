@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 
 public class CarView extends JFrame{
     private static final int X = 1250;
-    private static final int Y = 1000;
+    private static final int Y = 800;
 
     // The controller member
     CarController carC;
