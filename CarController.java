@@ -19,8 +19,7 @@ public class CarController implements Observer{
 
     // A list of cars, modify if needed
     ArrayList<Car> cars;
-    private static ArrayList<Car> randomCarList;
-    ArrayList<Workshop> workshops;
+    private final ArrayList <Workshop> workshops;
 
     public CarController() {
         this.cars = new ArrayList<>();
