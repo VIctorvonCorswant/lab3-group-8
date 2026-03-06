@@ -166,7 +166,7 @@ public class CarController implements Observer{
     */
     @Override
     public void update(Subject s) {
-        if (s == SimulationEngine.getEngineSubject()) {
+        if (s instanceof SimulationEngine) {
             if (frame == null) return;
 
             Point panelDim = getPanelDim();
