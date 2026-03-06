@@ -2,7 +2,7 @@ package Components;
 
 import java.awt.*;
 
-public final class Volvo240 extends Car implements Movable, Towable {
+public final class Volvo240 extends Car implements Towable {
     /** Initiate variables */
     private final static double trimFactor = 1.25;
 

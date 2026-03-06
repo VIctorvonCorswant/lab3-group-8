@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class RandomCar {
-    ArrayList<Color> allColors;
+    private ArrayList<Color> allColors;
     private Point panelDim;
 
     public RandomCar(Point panelDim) {
@@ -48,7 +48,4 @@ public class RandomCar {
         }
         return null;
     }
-
-
-
 }

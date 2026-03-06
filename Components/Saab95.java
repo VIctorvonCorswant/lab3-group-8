@@ -2,7 +2,7 @@ package Components;
 
 import java.awt.*;
 
-public final class Saab95 extends Car implements Movable, Towable, Turbo {
+public final class Saab95 extends Car implements Towable, Turbo {
     /** Initiate variables */
     private boolean turboOn;
 

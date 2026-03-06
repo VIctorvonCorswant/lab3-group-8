@@ -3,7 +3,7 @@ package Components;
 import java.awt.*;
 import java.util.List;
 
-public class VolvoFH16 extends Truck implements Movable, Turbo {
+public class VolvoFH16 extends Truck implements Turbo {
 
     /** Initiate variables */
     private boolean turboOn;

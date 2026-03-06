@@ -3,7 +3,7 @@ package Components;
 import java.awt.*;
 
 // Yes the Components.Scania is towable (https://www.agg-net.com/sites/default/files/styles/large_compact_teaser/public/images/news/volvo_fh16.jpg?h=bb31b4aa&itok=WxqahyC0)
-public class Scania extends Truck implements Movable, Towable, Turbo {
+public class Scania extends Truck implements Towable, Turbo {
     /** Initiate variables */
     private boolean turboOn;
     private TruckAttachment<Object> bed;
